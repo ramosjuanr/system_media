@@ -106,6 +106,7 @@ typedef enum {
     AUDIO_FORMAT_APTX_HD             = 0x21000000u,
     AUDIO_FORMAT_AC4                 = 0x22000000u,
     AUDIO_FORMAT_LDAC                = 0x23000000u,
+    AUDIO_FORMAT_PCM_OFFLOAD 	     = 603979776u, // 0x24000000UL
     AUDIO_FORMAT_MAT                 = 0x24000000u,
     AUDIO_FORMAT_MAIN_MASK           = 0xFF000000u,
     AUDIO_FORMAT_SUB_MASK            = 0x00FFFFFFu,
@@ -175,6 +176,8 @@ typedef enum {
     AUDIO_FORMAT_MAT_1_0               = 0x24000001u, // (MAT | MAT_SUB_1_0)
     AUDIO_FORMAT_MAT_2_0               = 0x24000002u, // (MAT | MAT_SUB_2_0)
     AUDIO_FORMAT_MAT_2_1               = 0x24000003u, // (MAT | MAT_SUB_2_1)
+    AUDIO_FORMAT_PCM_16_BIT_OFFLOAD    = 603979777u, // (PCM_OFFLOAD | PCM_SUB_16_BIT),
+    AUDIO_FORMAT_PCM_24_BIT_OFFLOAD    = 603979780u, // (PCM_OFFLOAD | PCM_SUB_8_24_BIT),
 } audio_format_t;
 
 enum {
@@ -273,6 +276,7 @@ enum {
     AUDIO_CHANNEL_INDEX_MASK_6              = 0x8000003Fu, // INDEX_HDR | (1 << 6) - 1
     AUDIO_CHANNEL_INDEX_MASK_7              = 0x8000007Fu, // INDEX_HDR | (1 << 7) - 1
     AUDIO_CHANNEL_INDEX_MASK_8              = 0x800000FFu, // INDEX_HDR | (1 << 8) - 1
+    AUDIO_CHANNEL_IN_5POINT1                = 252u, // IN_LEFT | IN_RIGHT | IN_FRONT | IN_BACK | IN_LEFT_PROCESSED | IN_RIGHT_PROCESSED
 };
 
 typedef enum {
@@ -369,6 +373,7 @@ typedef enum {
     AUDIO_OUTPUT_FLAG_MMAP_NOIRQ       = 0x4000,
     AUDIO_OUTPUT_FLAG_VOIP_RX          = 0x8000,
     AUDIO_OUTPUT_FLAG_INCALL_MUSIC     = 0x10000,
+    AUDIO_OUTPUT_FLAG_COMPRESS_PASSTHROUGH = 65536, // 0x10000
 } audio_output_flags_t;
 
 typedef enum {
